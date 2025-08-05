@@ -54,34 +54,57 @@ body {
   position: relative;
   width: 100%;
   height: 100vh;
+  overflow: hidden;
 }
+
+/* Keep model behind everything */
 .model {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: 0; /* put it behind */
 }
 spline-viewer {
   width: 100%;
   height: 100%;
 }
 
-/* Content Box */
+/* Glassmorphism content box */
 .content {
   position: absolute;
   top: 50%;
   left: 10%;
   transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.07);
   border-radius: 20px;
   padding: 30px;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
   max-width: 450px;
+  z-index: 2; /* above model */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,0.3);
   z-index: 1;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
+/* Content Box */
+@media (max-width: 768px) {
+  .content {
+    left: 5%;
+    right: 5%;
+    padding: 20px;
+    top: 60%; /* shift down slightly for better visibility */
+    transform: translateY(-60%);
+  }
+}
 /* Text Styles */
 .title {
   font-size: 3rem;
