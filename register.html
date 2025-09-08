@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PGC-GYM • Register</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+</head>
+<body class="page page-enter">
+  <div class="menu">
+    <div class="container flex">
+      <div class="mobile-btn" id="mobileBtn"><ion-icon name="grid"></ion-icon></div>
+      <div class="logo"><a href="index.html"><img src="https://raw.githubusercontent.com/programmercloud/pgc-gym/main/img/logo.png" alt="logo"></a></div>
+      <ul class="nav">
+        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="features.html" class="nav-link">Features</a></li>
+        <li class="nav-item"><a href="explore.html" class="nav-link">Explore</a></li>
+        <li class="nav-item"><a href="trainers.html" class="nav-link">Trainers</a></li>
+        <li class="nav-item"><a href="testimonials.html" class="nav-link">Testimonials</a></li>
+        <li class="nav-item"><a href="register.html" class="nav-link active">Register</a></li>
+        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+      <a href="register.html" class="btn">Register</a>
+    </div>
+  </div>
+
+  <main>
+    <header class="header" data-aos="fade-up">
+      <div class="container">
+        <h1 class="mb">Join PGC-GYM</h1>
+        <p class="tertiary mb">Choose your plan and start today.</p>
+      </div>
+    </header>
+
+    <section class="section" data-aos="fade-up">
+      <div class="container">
+        <form class="register-form" onsubmit="return false;">
+          <input type="text" placeholder="Full Name" required />
+          <input type="email" placeholder="Email Address" required />
+          <select required>
+            <option value="">Select Plan</option>
+            <option>Monthly</option>
+            <option>Quarterly</option>
+            <option>Yearly</option>
+          </select>
+          <button class="btn">Register</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container flex">
+      <p class="tertiary">&copy; 2025 PGC-GYM. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="jsjs.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init({ duration: 900, once: true });</script>
+</body>
+</html>

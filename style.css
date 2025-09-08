@@ -1,163 +1,145 @@
-/* body{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    background-color: black;
-    color: white;
-    font-family: sans-serif;
-}
-h1{
-    font-size: 3.5em;
-}
-h1 > span{
-    position: relative;
-    display: inline-block;
-    color: orange;
-    height: 1.25em;
-    vertical-align: bottom;
-    overflow: hidden;
-}
-h1 > span > span{
-    display: block;
-    animation: animateWords 2.9s infinite ease;
-}
-@keyframes animateWords{
-    0% {transform: translateY(0%);}
-     25% {transform: translateY(-100%);}
-      50% {transform: translateY(-200%);}
-       75% {transform: translateY(-300%);}
-        100% {transform: translateY(-400%);}
-} */
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;400;500;700&display=swap");
 
-/* Reset & Fonts */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-body {
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-  color: white;
-  overflow: hidden;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Variables */
+:root{
+  --clr-primary: #29a396;
+  --bg-1: #0b1111;
+  --bg-2: #121616;
+  --card: #1d1f1e;
+  --muted: #bfc9c8;
+  --white: #fff;
 }
 
-/* Layout */
-.container {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-}
+/* Reset & base */
+*{box-sizing:border-box;margin:0;padding:0;font-family:"Nunito",sans-serif}
+html{scroll-behavior:smooth}
+body{background:radial-gradient(#0b1111,#071a1a);color:var(--white);min-height:100vh;overflow-x:hidden}
+.container{width:86%;max-width:1200px;margin:0 auto}
+.flex{display:flex;align-items:center;justify-content:center}
+a{color:inherit;text-decoration:none}
 
-/* Keep model behind everything */
-.model {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0; /* put it behind */
-}
-spline-viewer {
-  width: 100%;
-  height: 100%;
-}
+/* Page transition */
+.page {opacity:0; transform: translateY(6px); transition: all 360ms ease}
+.page-enter{opacity:1; transform:none}
+.page-exit{opacity:0; transform:translateY(-8px)}
 
-/* Glassmorphism content box */
-.content {
-  position: absolute;
-  top: 50%;
-  left: 10%;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.07);
-  border-radius: 20px;
-  padding: 30px;
-  backdrop-filter: blur(12px);
-  max-width: 450px;
-  z-index: 2; /* above model */
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-}
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background: rgba(0,0,0,0.3);
-  z-index: 1;
-}
+/* Menu */
+.menu{width:100%;background:linear-gradient(90deg,#0e0e0e 70%, #142d2a);padding:12px 0;position:sticky;top:0;z-index:40}
+.menu .container{justify-content:space-between}
+.logo img{width:76px}
+.nav{list-style:none}
+.nav-item{display:inline-block;margin-right:24px;font-size:17px}
+.nav-item:last-of-type{margin-right:0}
+.nav-link{color:var(--white);padding:6px 4px;border-radius:6px}
+.nav-link:hover,.nav-link.active{color:var(--clr-primary);transition:all 180ms}
+.mobile-btn{display:none;font-size:30px;cursor:pointer}
 
-/* Content Box */
-@media (max-width: 768px) {
-  .content {
-    left: 5%;
-    right: 5%;
-    padding: 20px;
-    top: 60%; /* shift down slightly for better visibility */
-    transform: translateY(-60%);
-  }
-}
-/* Text Styles */
-.title {
-  font-size: 3rem;
-  font-family: 'Orbitron', sans-serif;
-}
-.gradient-text {
-  background: linear-gradient(to right, #00f5a0, #00d9f5);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.subtitle {
-  font-size: 1.5rem;
-  margin: 10px 0;
-  opacity: 0.8;
-}
-.desc {
-  font-size: 1rem;
-  margin-bottom: 20px;
-  line-height: 1.5;
-  opacity: 0.9;
-}
+/* Buttons */
+.btn{padding:10px 26px;background:var(--clr-primary);border-radius:40px;font-size:18px;display:inline-block;text-decoration:none;color:#fff}
+.btn:hover{transform:translateY(-2px);transition:all 180ms}
+.btn-2{font-size:30px;color:#cfcfcf}
 
-/* Button */
-.btn {
-  display: inline-block;
-  padding: 10px 20px;
-  background: #00f5a0;
-  color: #000;
-  border: none;
-  border-radius: 25px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background 0.3s ease;
-}
-.btn:hover {
-  background: #00d9f5;
-  color: #000;
-}
+/* Header */
+.header{width:100%;padding:48px 0}
+.header-inner{align-items:center;gap:32px}
+.text{width:60%}
+.visual{width:40%}
+.header h1{font-size:54px;line-height:1.04}
+.header h1 span{color:var(--clr-primary)}
+.primary{font-size:32px;font-weight:700}
+.secondary{font-size:20px;font-weight:700}
+.tertiary{font-size:15px;color:var(--muted);line-height:1.5}
+.mb{margin-bottom:18px}
+.mt{margin-top:16px}
+
+/* Sections */
+.section{background:transparent;padding:56px 0;border-top:1px solid rgba(255,255,255,0.02)}
+.section .container{justify-content:space-between}
+.trainers-row{gap:22px}
+.trainer{background:transparent;text-align:center;padding:18px;border-radius:10px;width:260px}
+.trainer img{width:100%;border-radius:18px;padding:8px;background:#0f1313;outline:2px solid rgba(255,255,255,0.04)}
+
+/* Client card */
+.client{background:#fff;color:#000;padding:22px;border-radius:16px;position:relative;max-width:420px}
+.client img{width:76px;height:76px;border-radius:50%;position:absolute;top:-36px;left:calc(50% - 38px)}
+
+/* Forms */
+.contact-form,input,textarea,select,.register-form input{width:100%;padding:12px;border-radius:10px;border:none;outline:none;background:#0f1414;color:var(--white);margin-bottom:12px}
+.contact-form button,.register-form button{padding:10px 20px;border-radius:10px;border:none;background:var(--clr-primary);cursor:pointer}
+.register-form{max-width:520px;margin:20px 0}
+
+/* Trainers grid */
+.trainers-grid .trainer-card{background:var(--card);padding:18px;border-radius:12px;text-align:center;margin:10px;min-width:220px}
+.trainer-card img{width:100%;border-radius:10px;margin-bottom:10px}
 
 /* Responsive */
+@media (max-width: 920px){
+  .container{width:92%}
+  .text,.visual{width:100%}
+  .header h1{font-size:40px}
+  .nav-item{margin-right:16px}
+}
+@media (max-width: 768px){
+  .flex{flex-direction:column}
+  .mobile-btn{display:block;position:absolute;right:18px;top:12px}
+  .nav{display:none}
+  .menu.active .nav{display:block;background:transparent;padding-top:18px}
+  .menu .btn{display:none}
+  .menu.active .btn{display:inline-block}
+  .trainer{width:100%;margin-bottom:18px}
+}
+@media (max-width:480px){
+  .header h1{font-size:30px}
+  .logo img{width:64px}
+}
+
+/* small utilities */
+.feature-list, .explore-list{list-style:disc;padding-left:20px;color:var(--muted)}
+.bt{background:#0f7b69}
+/* ----------------- Responsive ----------------- */
+
+/* Tablets & small laptops */
+@media (max-width: 1024px) {
+  .container { width: 92%; }
+  .text, .visual { width: 100%; }
+  .header-inner { flex-direction: column; gap: 20px; text-align: center; }
+  .header h1 { font-size: 42px; }
+  .visual img { max-width: 80%; margin: 0 auto; display: block; }
+}
+
+/* Tablets */
 @media (max-width: 768px) {
-  .content {
-    left: 5%;
-    right: 5%;
-    padding: 20px;
-  }
-  .title {
-    font-size: 2.2rem;
-  }
-  .subtitle {
-    font-size: 1.2rem;
-  }
-  .desc {
-    font-size: 0.95rem;
-  }
+  /* Flex direction column by default */
+  .flex { flex-direction: column; text-align: center; }
+
+  /* Navbar */
+  .mobile-btn { display: block; font-size: 32px; cursor: pointer; position: absolute; right: 20px; top: 16px; }
+  .nav { display: none; flex-direction: column; margin-top: 20px; }
+  .menu.active .nav { display: flex; }
+  .nav-item { margin: 12px 0; font-size: 20px; }
+  .menu .btn { display: none; }
+  .menu.active .btn { display: inline-block; margin-top: 10px; }
+
+  /* Header */
+  .header h1 { font-size: 34px; }
+  .primary { font-size: 26px; }
+  .secondary { font-size: 20px; }
+  .tertiary { font-size: 14px; }
+
+  /* Trainers grid */
+  .trainers-grid .trainer-card { width: 100%; margin: 12px 0; }
+  .trainer img { width: 100%; }
+
+  /* Forms */
+  .register-form, .contact-form { width: 100%; }
+}
+
+/* Small screens (phones) */
+@media (max-width: 480px) {
+  .header h1 { font-size: 26px; }
+  .logo img { width: 60px; }
+  .btn { font-size: 16px; padding: 8px 18px; }
+  .trainer-card img { width: 100%; }
+  .client { margin: 0 auto 40px; width: 90%; }
+  .contact-form input, .contact-form textarea { font-size: 14px; }
 }
